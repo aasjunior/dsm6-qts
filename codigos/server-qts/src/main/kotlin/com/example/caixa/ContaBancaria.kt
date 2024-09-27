@@ -1,4 +1,4 @@
-package com.aasjunior.model
+package com.example.caixa
 
 import java.sql.Connection
 
