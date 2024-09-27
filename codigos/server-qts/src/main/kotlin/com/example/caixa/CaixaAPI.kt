@@ -26,5 +26,48 @@ fun Application.CaixaAPI(){
                 call.respondText("Número de conta inválido.")
             }
         }
+
+        post("/contas/depositar/{NumeroConta}/{Valor}") {
+            try {
+                val numeroConta = call.parameters["NumeroConta"]?.toIntOrNull()
+                val valor = call.parameters["Valor"]?.toDoubleOrNull()
+
+                if(numeroConta != null){
+                    val conta = ContaBancaria.buscarConta(numeroConta)
+                    if(conta != null){
+                        conta.depositar(valor!!)
+                        call.respondText("Depósito realizado com sucesso. Novo saldo: R$ ${conta.consultarSaldo()}")
+                    }else{
+                        call.respondText("Conta não encontrada.")
+                    }
+                }else{
+                    call.respondText("Número de conta inválido.")
+                }
+            }catch(e:Exception){
+                call.respondText("Erro: ${e.message}")
+            }
+        }
+
+        post("/contas/sacar/{NumeroConta}/{Valor}") {
+            try {
+                val numeroConta = call.parameters["NumeroConta"]?.toIntOrNull()
+                val valor = call.parameters["Valor"]?.toDoubleOrNull()
+
+                if(numeroConta != null){
+                    val conta = ContaBancaria.buscarConta(numeroConta)
+                    if(conta != null){
+                        conta.sacar(valor!!)
+                        call.respondText("Saque realizado com sucesso. Novo saldo: R$ ${conta.consultarSaldo()}")
+                    }else{
+                        call.respondText("Conta não encontrada.")
+                    }
+                }else{
+                    call.respondText("Número de conta inválido.")
+                }
+            }catch(e:Exception){
+                call.respondText("Erro: ${e.message}")
+            }
+        }
+
     }
 }
