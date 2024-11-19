@@ -22,6 +22,18 @@ repositories {
     mavenCentral()
 }
 
+//tasks.test {
+//    useJUnitPlatform()
+//    testLogging {
+//        events("PASSED", "FAILED", "SKIPPED")
+//        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+//        showExceptions = true
+//        showCauses = true
+//        showStackTraces = true
+//    }
+//}
+
+
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-content-negotiation-jvm")

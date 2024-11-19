@@ -7,7 +7,7 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 import kotlin.text.toDoubleOrNull
 
-fun Application.CalculadoraAPI() {
+fun Application.CalculatorAPI() {
     routing {
         get("/") {
             call.respondText("Hello World!")
